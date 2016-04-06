@@ -6,7 +6,7 @@ class FilterExpression : Resolvable {
   let variable: Variable
 
   init(token: String, parser: TokenParser) throws {
-    let bits = token.characters.split("|").map({ String($0).trim(" ") })
+    let bits = token.characters.split(separator: "|").map({ String($0).trim(" ") })
     if bits.isEmpty {
       filters = []
       variable = Variable("")
@@ -43,7 +43,7 @@ public struct Variable : Equatable, Resolvable {
   }
 
   private func lookup() -> [String] {
-    return variable.characters.split(".").map(String.init)
+    return variable.characters.split(separator: ".").map(String.init)
   }
 
   /// Resolve the variable in the given context
@@ -76,7 +76,7 @@ public struct Variable : Equatable, Resolvable {
 #if os(Linux)
         return nil
 #else
-        current = object.valueForKey(bit)
+        current = object.value(forKey: bit)
 #endif
       } else {
         return nil

@@ -37,7 +37,7 @@ public class NowNode : NodeType {
       return ""
     }
 
-    return formatter!.stringFromDate(date)
+    return formatter!.string(from: date)
   }
 }
 #endif

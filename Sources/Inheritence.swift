@@ -8,12 +8,12 @@ class BlockContext {
   }
 
   func pop(blockName: String) -> BlockNode? {
-    return blocks.removeValueForKey(blockName)
+    return blocks.removeValue(forKey: blockName)
   }
 }
 
 
-extension CollectionType {
+extension Collection {
   func any(closure: Generator.Element -> Bool) -> Generator.Element? {
     for element in self {
       if closure(element) {
@@ -69,7 +69,7 @@ class ExtendsNode : NodeType {
     }
 
     guard let template = loader.loadTemplate(templateName) else {
-      let paths:String = loader.paths.map { $0.description }.joinWithSeparator(", ")
+      let paths:String = loader.paths.map { $0.description }.joined(separator: ", ")
       throw TemplateSyntaxError("'\(templateName)' template not found in \(paths)")
     }
 

@@ -11,8 +11,8 @@ public class Template {
 
   /// Create a template with the given name inside the given bundle
   public convenience init(named:String, inBundle bundle:NSBundle? = nil) throws {
-    let useBundle = bundle ??  NSBundle.mainBundle()
-    guard let url = useBundle.URLForResource(named, withExtension: nil) else {
+    let useBundle = bundle ??  NSBundle.main()
+    guard let url = useBundle.url(forResource: named, withExtension: nil) else {
       throw NSError(domain: NSCocoaErrorDomain, code: NSFileNoSuchFileError, userInfo: nil)
     }
 

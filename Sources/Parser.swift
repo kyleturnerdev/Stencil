@@ -67,14 +67,14 @@ public class TokenParser {
 
   public func nextToken() -> Token? {
     if tokens.count > 0 {
-      return tokens.removeAtIndex(0)
+        return tokens.remove(at: 0)
     }
 
     return nil
   }
 
   public func prependToken(token:Token) {
-    tokens.insert(token, atIndex: 0)
+    tokens.insert(token, at: 0)
   }
 
   public func findFilter(name: String) throws -> Filter {

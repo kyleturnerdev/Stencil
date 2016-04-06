@@ -17,7 +17,7 @@ public class Context {
   public subscript(key: String) -> Any? {
     /// Retrieves a variable's value, starting at the current context and going upwards
     get {
-      for dictionary in Array(dictionaries.reverse()) {
+      for dictionary in Array(dictionaries.reversed()) {
         if let value = dictionary[key] {
           return value
         }

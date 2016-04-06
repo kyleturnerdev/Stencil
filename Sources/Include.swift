@@ -28,7 +28,7 @@ public class IncludeNode : NodeType {
     }
 
     guard let template = loader.loadTemplate(templateName) else {
-      let paths = loader.paths.map { $0.description }.joinWithSeparator(", ")
+      let paths = loader.paths.map { $0.description }.joined(separator: ", ")
       throw TemplateSyntaxError("'\(templateName)' template not found in \(paths)")
     }
 

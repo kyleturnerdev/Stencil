@@ -42,7 +42,7 @@ public class ForNode : NodeType {
 
     if let values = values as? [Any] where values.count > 0 {
       let count = values.count
-      return try values.enumerate().map { index, item in
+      return try values.enumerated().map { index, item in
         let forContext: [String: Any] = [
           "first": index == 0,
           "last": index == (count - 1),
@@ -52,7 +52,7 @@ public class ForNode : NodeType {
         return try context.push([loopVariable: item, "forloop": forContext]) {
           try renderNodes(nodes, context)
         }
-      }.joinWithSeparator("")
+      }.joined(separator: "")
     }
 
     return try context.push {
